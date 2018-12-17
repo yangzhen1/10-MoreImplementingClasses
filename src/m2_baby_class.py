@@ -42,8 +42,24 @@ def main():
 
 
 class Baby:
-    def __init__(self, ccp):
-        print('Hello baby', ccp, '!')
+    def __init__(self, ):
+        self.number = 0
+        print('Hello baby', , '!')
+
+    def feed_baby(self):
+        print('Thank you for feeding baby', str,'.' )
+
+    def hour_passes(self):
+        if self.number == 0:
+            self.number += 1
+            print('Baby', str,  'is sleeping.')
+        elif self.number == 1:
+            self.number += 1
+            print('Baby', str,  'is awake.  Time for food.')
+        elif self.number >= 2:
+            self.number += 1
+            print('Baby', str, 'is CRYING uncontrollably!  Feed the Baby!')
+
 
 
 
