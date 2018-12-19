@@ -3,8 +3,8 @@ A   CapitalT   class and functions that use/test it.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhen Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -23,7 +23,7 @@ def main():
     # run_test_simple_t()
     # run_test_set_colors()
     # run_test_move_by()
-    # run_test_clone()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -115,6 +115,16 @@ class CapitalT(object):
     """
 
     def __init__(self, intersection_center, width, height, letter_thickness):
+        self.center = intersection_center
+        self.width = width
+        self.height = height
+        self.thickness = letter_thickness
+        self.h_rect = rg.Rectangle(rg.Point(intersection_center.x - 0.5 * width, intersection_center.y - 0.5 * letter_thickness),
+                                   rg.Point(intersection_center.x + 0.5 * width, intersection_center.y + 0.5 * letter_thickness))
+        self.v_rect = rg.Rectangle(rg.Point(intersection_center.x - 0.5 * letter_thickness, intersection_center.y - 0.5 * letter_thickness),
+                                   rg.Point(intersection_center.x + 0.5 * letter_thickness, intersection_center.y + height - 0.5 * letter_thickness))
+
+
         """
         *** See   dimensions.pdf   to understand the following! ***
 
@@ -162,7 +172,7 @@ class CapitalT(object):
           :type letter_thickness:    int
         """
         # ---------------------------------------------------------------------
-        # TODO: 3.
+        # DONE: 3.
         #   READ the above specification, including the Example.
         #   Implement this method, using the instance variables
         #      h_rect
@@ -172,6 +182,8 @@ class CapitalT(object):
         # ---------------------------------------------------------------------
 
     def attach_to(self, window):
+        self.v_rect.attach_to(window)
+        self.h_rect.attach_to(window)
         """
         What comes in:
            -- self
@@ -190,7 +202,7 @@ class CapitalT(object):
           :type window: rg.RoseWindow
         """
         # ---------------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -200,6 +212,12 @@ class CapitalT(object):
         # ---------------------------------------------------------------------
 
     def set_colors(self, fill_color, outline_color):
+        self.v_rect.fill_color = fill_color
+        self.v_rect.outline_color = outline_color
+        self.h_rect.outline_color = outline_color
+        self.h_rect.fill_color = fill_color
+        self.ttp=fill_color
+        self.ggb=outline_color
         """
         What comes in:
           -- self
@@ -222,7 +240,7 @@ class CapitalT(object):
           :type outline_color: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -232,6 +250,11 @@ class CapitalT(object):
         # ---------------------------------------------------------------------
 
     def move_by(self, dx, dy):
+        self.v_rect.move_by(dx, dy)
+
+        self.h_rect.move_by(dx, dy)
+
+
         """
         What comes in:
            -- self
@@ -255,7 +278,7 @@ class CapitalT(object):
           :type dy: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 6.
+        # DONE: 6.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -268,6 +291,11 @@ class CapitalT(object):
         # ---------------------------------------------------------------------
 
     def clone(self):
+        aap = CapitalT(self.center, self.width, self.height, self.thickness)
+        aap.set_colors(self.ttp,self.ggb)
+        return aap
+
+
         """
         What comes in:
           -- self
