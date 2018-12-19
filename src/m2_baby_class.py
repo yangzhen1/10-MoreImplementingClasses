@@ -41,24 +41,28 @@ def main():
             mckinley.hour_passes()
 
 
+
 class Baby:
-    def __init__(self, ):
+    def __init__(self, name):
         self.number = 0
-        print('Hello baby', , '!')
+        self.name = name
+        print('Hello baby {} !'.format(self.name))
 
     def feed_baby(self):
-        print('Thank you for feeding baby', str,'.' )
+        self.number = 0
+        print('Thank you for feeding baby {}.'.format(self.name))
 
     def hour_passes(self):
         if self.number == 0:
             self.number += 1
-            print('Baby', str,  'is sleeping.')
+            print('Baby {} is sleeping.'.format(self.name))
         elif self.number == 1:
             self.number += 1
-            print('Baby', str,  'is awake.  Time for food.')
+            print('Baby {} is awake.  Time for food.'.format(self.name))
         elif self.number >= 2:
             self.number += 1
-            print('Baby', str, 'is CRYING uncontrollably!  Feed the Baby!')
+            print('Baby {} is CRYING uncontrollably!  Feed the Baby!'.format(self.name))
+
 
 
 
